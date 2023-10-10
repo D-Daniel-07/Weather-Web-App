@@ -1,0 +1,31 @@
+<div class="container">
+<div class="details">
+    <div class="header">
+    <button (click)="prev()">{{prevbtn}}</button>
+    <h2 class="title">Weather Condition in {{cityName.charAt(0).toUpperCase() + cityName.slice(1)}} on {{date}} [{{day}}]</h2>
+    <button (click)="next()">{{nextbtn}}</button>
+    </div>
+        <p><img src="{{iconURL}}" alt="weather image"></p>
+        <p class="summary">{{summary}}</p>
+        <div class="line1">
+            <div class="temperature">
+                <img src="assets/hot.png">
+                <p>{{temperature}}°C </p>
+            </div>
+            <div class="pressure">
+                <img src="assets/pressure.png">
+                <p>{{pressure}}Hg</p>
+            </div>
+        </div>
+        <div class="line2">
+            <div class="humidity">
+                <img src="assets/humidity.png">
+                <p>{{humidity}} %</p>
+            </div>
+            <div class="windspeed">
+                <img src="assets/wind.png">
+                <p>{{windspeed}}m/s</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="container1" *ngIf="showWeek">
+<div class="header">
+    <button (click)="prev()">{{prevbtn}}</button>
+    <h2>Weather condition in this Week in {{cityName.charAt(0).toUpperCase() + cityName.slice(1)}}</h2>
+    <button (click)="next()">{{nextbtn}}</button>
+</div>
+<div class="week-days">
+    <ul>
+        <li class="cards" *ngFor="let x of lists; let i = index">
+            <div class="date" (click)="onDay(i)">
+                <p class="day">{{ getDayofWeek(x.valid_date) }}</p>
+                <p>{{ x.valid_date }}</p>
+            </div>
+            <div class="weather">
+                <p><img class="weather-image" [src]="'https://www.weatherbit.io/static/img/icons/' + x.weather.icon + '.png'" alt="weather image"></p>
+
+                <p class="summary">{{ x.weather.description }}</p>
+            </div>
+            <div class="line1">
+                <div class="temperature">
+                    <img src="assets/hot.png">
+                    <p>{{ round(x.temp) }}°C </p>
+                </div>
+                <div class="pressure">
+                    <img src="assets/pressure.png">
+                    <p>{{ round(x.pres * 0.02952998057228486) }}Hg</p>
+                </div>
+            </div>
+            <div class="line2">
+                <div class="humidity">
+                    <img src="assets/humidity.png">
+                    <p>{{ x.rh }} %</p>
+                </div>
+                <div class="windspeed">
+                    <img src="assets/wind.png">
+                    <p>{{ x.wind_spd }}m/s</p>
+                </div>
+            </div>
+            <div class="line3">
+                <p class="feelsLike">Feels like {{ round(x.vis) }}°C</p>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</div>
+<div class="container2" *ngIf="showDetails">
+    <div class="header">
+        <h2>Weather details of {{cityName.charAt(0).toUpperCase() + cityName.slice(1)}} on {{sDay}}</h2>
+    </div>
+    <div class="details">
+        <div class="left" (click)="hideDetails()">
+            <ul>
+                <li>Temperature : {{sTemperature}}°C</li>
+                <li>Pressure : {{sPressure}}Hg</li>
+                <li>Humidity : {{sHumidity}}%</li>
+                <li>windspeed : {{sWindspeed}}m/s</li>
+                <li>max_temp : {{sMax}}°C</li>
+                <li>min_temp: {{sMin}}°C</li>
+            </ul>
+        </div>
+        <div class="right">
+            <ul>
+                <li>Wind Direction : {{sWindDir}}°</li>
+                <li>Wind Gust Speed : {{sWinGusSpd}} m/s</li>
+                <li>Visibility : {{sVisibility}} KM</li>
+                <li>Feels_like : {{sFeelsLike}} °C</li>
+                <li>Cloud Coverage : {{sClouds}} %</li>
+                <li>sea_level : {{sSeaLevel}} mb</li>
+            </ul>
+        </div>
+    </div>
+</div>
